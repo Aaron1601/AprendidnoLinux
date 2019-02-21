@@ -1,0 +1,27 @@
+
+PASOS PARA CONEXION SSH CON SERVIDOR REMOTO
+
+
+1. Generate a new key private and public
+Crear el directorio .ssh
+Dentro del directorio generar la llave
+> ssh-keygen -t rsa -C "your_email@example.com"
+
+Compartir la llave Publica para que sea guardada en el servidor Remoto
+
+Agregar el agente ssh a bash
+ > exec ssh-agent bash
+
+2. Evaluar la llave privada
+>  eval $(ssh-agent)
+>  ssh-add .ssh/id_rsa
+========================================================================
+Servidor
+
+1. Crear usuario
+"Usar script de Santitos"
+2. Abrir el puerto 22
+> dnf install openssh-server  //descargar el pkt
+> systemctl start sshd.service
+> systemctl enable sshd.service
+
